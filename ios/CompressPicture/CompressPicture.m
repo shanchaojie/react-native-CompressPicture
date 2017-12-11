@@ -14,11 +14,10 @@
 
 RCT_EXPORT_MODULE(CompressPicture);
 
-RCT_REMAP_METHOD(CompressPicture, image:(UIImage*)image size:(CGFloat )size resolver:(RCTPromiseResolveBlock )resolver rejecter:(RCTPromiseRejectBlock )reject){
+RCT_EXPORT_METHOD(image:(UIImage*)image size:(CGFloat )size resolver:(RCTPromiseResolveBlock )resolver rejecter:(RCTPromiseRejectBlock )reject){
 
     NSData *data = [self compressOriginalImage:image toMaxDataSizeKBytes:size];
     resolver(data);
-
 }
 
 - (NSData *)compressOriginalImage:(UIImage *)image toMaxDataSizeKBytes:(CGFloat)size{
